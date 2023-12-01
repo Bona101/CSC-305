@@ -62,8 +62,62 @@ fn transpose(matrix: Matrix) -> String {
     format!("( {} {} )\n( {} {} )", matrix.0, matrix.2, matrix.1, matrix.3)
 }
 
+#[derive(Debug)]
+struct Rect {
+    length: i32,
+    width: i32,
+    name: &'static str
+}
+
+impl From <&'static str> for Rect {
+    fn from(s: &'static str) -> Self {
+        let mut parts = s.split(',');
+        let length = match parts.next() {
+            Some(val) => val.parse::<i32>().unwrap(),
+            None => 0
+        };
+        let width = match parts.next() {
+            Some(val) => val.parse::<i32>().unwrap(),
+            None => 0
+        };
+        let name = match parts.next() {
+            Some(val) => val,
+            None => ""
+        };
+
+        Rect {
+            length,
+            width,
+            name
+        }
+    }
+}
+
+impl PartialEq for Rect {  // So apparently the PartialEq allows you do this -> rect1 == rect2
+    fn eq(&self, other: &Self) -> bool {
+        self.length == other.length && self.width == other.width
+    }
+}
+
+struct Triangle {
+    side1: i32,
+    side2: i32,
+    side3: i32,
+    name: &'static str,
+}
 
 
+pub fn runn() {
+    let rect = Rect::from("1,5,name");
+    let rect2 = Rect::from("10,5,ne");
+    
+    println!("{:?}", rect);
+    let t = rect.eq(&rect2);
+    println!("t = {}", t);
+    if (rect == rect2){
+        print!("qwe");
+    }
+}
 pub fn run() {
     // Create struct with field init shorthand
     let name = String::from("Peter");
@@ -98,6 +152,8 @@ pub fn run() {
 
     // Instantiate a unit struct
     let _unit = Unit;
+    println!("un{:?}", _unit);
+
     let strr = Any("i");
     let num = Any(232);
     println!("{:?}", num);
