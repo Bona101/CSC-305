@@ -155,14 +155,14 @@ pub fn run4() {
     //data types in stack implement Copy trait by default, so I can use my_array twice below.
     let sum_of_all_even_numbers_after_square: i32 = my_array
         .into_iter()
-        .map(|n| n ^ 2)
-        .filter(|n| n % 2 == 0)
+        .map(|n| n * 2)
+        // .filter(|n| n % 2 == 0)
         .sum();
 
     let collection_of_all_even_numbers_after_square: Vec<i32> = my_array
         .into_iter()
-        .map(|n| n ^ 2)
-        .filter(|n| n % 2 == 0)
+        .map(|n| n * 2)
+        // .filter(|n| n % 2 == 0)
         .collect();
 
     println!(

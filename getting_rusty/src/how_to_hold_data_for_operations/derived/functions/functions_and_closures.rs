@@ -1,17 +1,3 @@
-fn f<F : FnOnce() -> String> (g: F) {
-    println!("{}", g());
-}
-
-pub fn runn() {
-    let mut s = String::from("foo");
-    let t = String::from("bar");
-
-    f(|| {
-        s += &t;
-        s
-    });
-    // Prints "foobar".
-}
 
 ///Functions and Closures
 //We have been using functions already, including the main() which is the program entry point
@@ -28,6 +14,7 @@ pub fn runn() {
 pub fn add(a: i32, b: i32) -> i32 {
     a + b
 }
+
 //The function type embodied in the above is fn(i32, i32) -> i32.
 //Function type is defined by the keyword fn followed 
 //by the optional expected parameter types
@@ -50,6 +37,7 @@ pub fn run() {
         "The result of applying add function f to {} and {} is {}",
         x, y, z
     );
+
 }
 
 ///let's define another function that handles straight line graph formula

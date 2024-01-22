@@ -170,4 +170,26 @@ pub fn run_again() {
         2..=100 => println!("Between 2 and 100"),
         _ => println!("Some other value"),
     }
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+
+    fn clo() -> Option<i32> {
+        Some(None::<i32>? + 9)
+    }
+
+    fn clon() -> Option<i32> {
+        Some(None::<i32>?)
+    }
+
+    fn clom() -> Option<i32> {
+        Some(Some(2)? + 1)
+    }
+
+    fn clog() -> Option<i32> {
+        Some(None?)
+    }
+    println!("{:?}", clo());
+    println!("{:?}", clon());
+    println!("{:?}", clom());
+    println!("{:?}", clog());
 }

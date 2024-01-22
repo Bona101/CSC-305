@@ -104,6 +104,7 @@ pub fn run2() {
 
     let rectangle2 = Rect::new(1.0, 3.0, "Rectangle2");
     let rectangle3 = Rect::from("4,5,Rectangle3");
+    let rectangle3eq: Rect = "4,5,Rectangle3".into(); // rectangle3 and rectangle3eq have the same value.
 
     //Compare using PartialOrd
     let result1 = rectangle1.partial_cmp(&rectangle2);

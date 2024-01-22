@@ -34,11 +34,13 @@ fn is_zero(v: Value) -> bool {
 fn test() {
     let mut u = MyUnion { f1: 1 };
     unsafe {
-        let b1 = &mut u.f1;
+        let mut b1 = &mut u.f1;
 //                    ---- first mutable borrow occurs here (via `u.f1`)
         // let b2 = &mut u.f2;  //Supposed to give an error if you uncomment this line
 //                    ^^^^ second mutable borrow occurs here (via `u.f2`)
         *b1 = 5;
+        println!("{}", b1);
+        println!("{}", unsafe {u.f1});
     }
 //  - first borrow ends here
     println!("{}", unsafe {u.f1});
