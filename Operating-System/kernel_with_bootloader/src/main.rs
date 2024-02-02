@@ -11,6 +11,8 @@ mod task_example;
 mod writer;
 // mod std;
 
+// use std::process::Output;
+
 use alloc::{borrow::ToOwned, sync::Arc};
 //use bootloader_api::config::Mapping;
 use writer::FrameBufferWriter;
@@ -154,17 +156,12 @@ fn my_entry_point(boot_info: &'static mut bootloader_api::BootInfo) -> ! {
     interrupts::init();
 
     //Let's experience getting string from keyboard and saving into a variable for use
-    // print!("Enter string: ");
-    // let input = match input_str() {
-    //     Some(value) => value,
-    //     None => "".to_owned()
-    // };
-    // println!("\nString entered is '{}'", input);
-        println!("Start typing:");
-        let input = input_str!("What is here does not print");
-        println!("\nString: {}", input);
+    // CA2 solution
 
-    // invoke a breakpoint exception for test
+        let input = input_str!("Your prompt here: ");
+        println!("\nString entered: {}", input);
+
+        // invoke a breakpoint exception for test
     //x86_64::instructions::interrupts::int3();
 
     //println!("Did not crash after breakpoint exception");
